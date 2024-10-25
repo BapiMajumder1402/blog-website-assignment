@@ -3,7 +3,9 @@ import express from 'express';
 import connectDB from './src/db/db.js';
 import cookieParser from 'cookie-parser';
 import cors from "cors";
-
+import userRouter from './src/routes/user.routes.js';
+import blogRoutes from './src/routes/blog.routes.js';
+import commentRoutes from './src/routes/comment.routes.js';
 
 dotenv.config({
     path: '.env'
@@ -18,6 +20,10 @@ app.use(express.json({ limit: "50kb" }));
 app.use(express.urlencoded({ extended: true, limit: "50kb" }));
 app.use(express.static("public"));
 
+
+app.use("/api/v1/user", userRouter);
+app.use("/api/v1/blog", blogRoutes);     
+app.use("/api/v1/comment", commentRoutes);
 
 
 connectDB().then(() => {

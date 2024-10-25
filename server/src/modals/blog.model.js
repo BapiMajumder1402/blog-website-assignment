@@ -15,6 +15,10 @@ const blogSchema = new Schema({
         ref: "User",
         required: true,
     },
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: "Comment", 
+    }]
 }, { timestamps: true });
 
 export const Blog = mongoose.model("Blog", blogSchema);
