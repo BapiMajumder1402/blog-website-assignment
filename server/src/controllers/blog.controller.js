@@ -30,6 +30,9 @@ export const getSingleBlog = asyncHandler(async (req, res) => {
             path: 'commenter', 
             select: 'fullName email'
         }
+    }).populate({
+        path: 'author',
+        select: 'fullName email' 
     });
 
     if (!blog) {
@@ -38,6 +41,7 @@ export const getSingleBlog = asyncHandler(async (req, res) => {
 
     return res.status(200).json(new ApiResponse(200, blog, "Blog retrieved successfully."));
 });
+
 
 
 export const getBlogs = asyncHandler(async (req, res) => {

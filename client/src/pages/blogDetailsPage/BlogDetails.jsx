@@ -34,18 +34,18 @@ const BlogDetails = () => {
   return (
     <div className="page">
       <div className="blog-details-container">
-        <h1 className="blog-title">{blog.data.title}</h1>
-        <p className="blog-content">{blog.data.content}</p>
+        <h1 className="blog-title">{blog?.data?.title}</h1>
+        <p className="blog-content">{blog?.data?.content}</p>
         <div className="blog-meta">
-          <p><strong>Author:</strong> {blog.data.author}</p>
-          <p><strong>Created At:</strong> {new Date(blog.data.createdAt).toLocaleDateString()}</p>
+          <p><strong>Author:</strong> {blog?.data?.author?.fullName}</p>
+          <p><strong>Published on:</strong> {new Date(blog.data.createdAt)?.toLocaleDateString()}</p>
         </div>
         <h3 className="comments-header">Comments</h3>
         <div className="comments-list">
-          {blog.data.comments?.length ? (
-            blog.data.comments.map((comment) => (
+          {blog?.data?.comments?.length ? (
+            blog?.data?.comments?.map((comment) => (
               <div className="comment-item" key={comment._id}>
-                <strong>{comment.commenter?.fullName || 'Anonymous'}:</strong> {comment.content}
+                <strong>{comment?.commenter?.fullName || 'Anonymous'}:</strong> {comment.content}
                 {user && user._id === comment.commenter?._id && (
                   <button className="delete-button" onClick={() => handleDeleteComment(comment._id)}>
                     Delete

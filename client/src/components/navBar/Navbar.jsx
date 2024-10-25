@@ -1,24 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../../redux/reducers/authSlice'; 
+import { logout } from '../../redux/reducers/authSlice';
 import './Nav.css';
 
 const AppNavbar = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
-  const navigate = useNavigate();  
-  const [expanded, setExpanded] = useState(false); 
+  const navigate = useNavigate();
+  const [expanded, setExpanded] = useState(false);
+  const location = useLocation();
 
   const handleLogout = () => {
     dispatch(logout());
-    setExpanded(false); 
-    navigate('/'); 
+    setExpanded(false);
+    navigate('/');
   };
 
+  useEffect(() => {
+    setExpanded(false);
+  }, [location]);
+
   const handleToggle = () => {
-    setExpanded(!expanded); 
+    setExpanded(!expanded);
   };
 
   const handleNavLinkClick = () => {
