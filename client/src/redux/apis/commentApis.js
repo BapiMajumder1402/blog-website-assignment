@@ -31,6 +31,14 @@ const commentsApi = createApi({
         body: { blogId, content },
       }),
     }),
+
+    updateComment: builder.mutation({
+      query: ({ commentId, content }) => ({
+        url: `/comment/${commentId}`,
+        method: 'PUT',
+        body: { content },
+      }),
+    }),
   }),
 });
 
@@ -38,7 +46,8 @@ const commentsApi = createApi({
 export const {
   useGetCommentsQuery,
   useDeleteCommentMutation,
-  useCreateCommentMutation,  
+  useCreateCommentMutation,
+  useUpdateCommentMutation  
 } = commentsApi;
 
 export default commentsApi;

@@ -44,7 +44,7 @@
     flex-direction: column;
 }
 
-.comment-input {
+.comment-textarea {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -61,4 +61,5 @@
     font-size: 1rem;
     cursor: pointer;
 }
-.delete-button{margin-left: 2rem; color: #F44336; border: 1px solid #F44336;padding: .25rem .5rem;border-radius: 5px;}
+.delete-button{ color: #F44336; border: 1px solid #F44336;padding: .25rem .5rem;border-radius: 5px;}
+.edit-button{ color:  #F78312; border: 1px solid  #F78312;padding: .25rem .5rem;border-radius: 5px;}
